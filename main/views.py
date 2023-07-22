@@ -58,6 +58,7 @@ def list_view(request):
 def listing_view(request, id):
     try:
         listing = Listing.objects.get(id=id)
+        print(listing)
         if listing is None:
             raise Exception('Invalid Listing ID')
         return render(request, 'views/listing.html',{'listing':listing}, )
