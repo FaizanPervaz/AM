@@ -22,7 +22,6 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 env = environ.Env()
 env.read_env()
 
-DATABASE_URL = env('DATABASE_URL')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -113,16 +112,22 @@ WSGI_APPLICATION = 'automax.wsgi.application'
 #         }
 #     }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DBNAME'),
-        'USER' : env('DBUSER'),
-        'PASSWORD' : env('DBPASSWORD'),
-        'HOST' : env('DBHOST'),
-        'PORT' : env('DBPORT'),
-    }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env('DBNAME'),
+#         'USER' : env('DBUSER'),
+#         'PASSWORD' : env('DBPASSWORD'),
+#         'HOST' : env('DBHOST'),
+#         'PORT' : env('DBPORT'),
+#     }
+# }
+
+DATABASES={
+    'default' :dj_database_url.parse("postgres://automax_user:VA53iznzknlof4kSqaawCiM2KpNBW3XC@dpg-citb0dp5rnuhcnsk6ol0-a.oregon-postgres.render.com/automax")
+
 }
+# DATABASE_URL = env('DATABASE_URL')
 
 
 # DATABASES = {
