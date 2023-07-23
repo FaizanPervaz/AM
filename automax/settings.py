@@ -89,7 +89,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'automax.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -123,17 +122,19 @@ WSGI_APPLICATION = 'automax.wsgi.application'
 #     }
 # }
 
+DATABASE_URL = env('DATABASE_URL')
+
 DATABASES={
-    'default' :dj_database_url.parse("postgres://automax_user:VA53iznzknlof4kSqaawCiM2KpNBW3XC@dpg-citb0dp5rnuhcnsk6ol0-a.oregon-postgres.render.com/automax")
+    'default' :dj_database_url.parse(DATABASE_URL)
 
 }
-# DATABASE_URL = env('DATABASE_URL')
-
 
 # DATABASES = {
-#     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
